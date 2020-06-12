@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "206691766768",
+    "firebase_url": "https://otaqtk-ba406.firebaseio.com",
+    "project_id": "otaqtk-ba406",
+    "storage_bucket": "otaqtk-ba406.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:206691766768:android:a1c245a9c6ef2ddc66cd35",
+        "android_client_info": {
+          "package_name": "com.example.otaqtk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "206691766768-g78t5h3kiqde2ah843ibc7lsf7ffbslc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBNX2SD_brgjF9KaHlk9M7ST1iJByh_AE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "206691766768-g78t5h3kiqde2ah843ibc7lsf7ffbslc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

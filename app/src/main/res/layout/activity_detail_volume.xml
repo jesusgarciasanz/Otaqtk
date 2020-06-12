@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121E3A"
+    tools:context=".ui.details.detail_volume.DetailVolumeActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/volume_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:background="@drawable/topbar_shape"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/volume_top_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Kimetsu no Yaiba"
+            android:textColor="#FFFF"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/button_goback_volume"
+            android:layout_width="15dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="24dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.513" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image_detail_volume"
+        android:layout_width="100dp"
+        android:layout_height="145dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/kimetsutest"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/volume_top_bar"
+        app:shapeAppearanceOverlay="@style/roundedImageVolume" />
+
+    <TextView
+        android:id="@+id/volume_titile"
+        android:layout_width="171dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Crueldad #1"
+        android:textColor="#3E92CC"
+        android:textSize="28sp"
+        app:layout_constraintStart_toEndOf="@+id/image_detail_volume"
+        app:layout_constraintTop_toBottomOf="@+id/volume_top_bar" />
+
+    <TextView
+        android:id="@+id/text_published"
+        android:layout_width="75dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/roboto"
+        android:text="Published: "
+        android:textColor="#FFFF"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/image_detail_volume"
+        app:layout_constraintTop_toBottomOf="@+id/volume_titile" />
+
+    <TextView
+        android:id="@+id/published_date_text"
+        android:layout_width="80dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="21-1-2015"
+        android:textColor="#3E92CC"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/text_published"
+        app:layout_constraintTop_toBottomOf="@+id/volume_titile"/>
+
+    <TextView
+        android:id="@+id/length_text"
+        android:layout_width="55dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/roboto"
+        android:text="Length: "
+        android:textColor="#FFFF"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/image_detail_volume"
+        app:layout_constraintTop_toBottomOf="@+id/text_published" />
+
+    <TextView
+        android:id="@+id/volume_length_text"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="76"
+        android:textColor="#D8315B"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/length_text"
+        app:layout_constraintTop_toBottomOf="@+id/published_date_text" />
+
+    <TextView
+        android:id="@+id/count_text"
+        android:layout_width="60dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/roboto"
+        android:text="Volume:"
+        android:textColor="#FFFF"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/image_detail_volume"
+        app:layout_constraintTop_toBottomOf="@+id/length_text" />
+
+    <TextView
+        android:id="@+id/volume_count_text"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="1"
+        android:textColor="#31D885"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/count_text"
+        app:layout_constraintTop_toBottomOf="@+id/volume_length_text"/>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/roboto"
+        android:text="Synopsis"
+        android:textColor="#FFFF"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_detail_volume" />
+
+    <TextView
+        android:layout_width="357dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/volume_example_text"
+        android:textColor="#FFFF"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.703"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+</androidx.constraintlayout.widget.ConstraintLayout>

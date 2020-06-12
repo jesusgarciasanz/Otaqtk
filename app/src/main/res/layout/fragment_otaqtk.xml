@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.fragments.OtaqtkFragment">
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="#121E3A">
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/constraintLayout6"
+          android:layout_width="match_parent"
+          android:layout_height="62dp"
+          android:background="@drawable/topbar_shape"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
+
+
+         <ImageView
+             android:layout_width="91dp"
+             android:layout_height="43dp"
+             android:src="@drawable/otaqtk_logo_small"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="parent" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/constraintLayout7"
+          android:layout_width="match_parent"
+          android:layout_height="55dp"
+          android:layout_marginTop="24dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/constraintLayout6">
+
+         <Button
+             android:id="@+id/button_otaqtk_animes"
+             android:layout_width="167dp"
+             android:layout_height="43dp"
+             android:layout_marginStart="5dp"
+             android:background="@drawable/selected_button_shape"
+             android:fontFamily="@font/roboto"
+             android:text="Animes"
+             android:textColor="#FFFF"
+             android:textSize="16sp"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="parent" />
+
+         <Button
+             android:id="@+id/button_otaqtk_mangas"
+             android:layout_width="167dp"
+             android:layout_height="43dp"
+             android:layout_marginStart="10dp"
+             android:layout_marginEnd="5dp"
+             android:background="@drawable/unselected_button_shape"
+             android:fontFamily="@font/roboto"
+             android:text="Mangas"
+             android:textColor="#FFFF"
+             android:textSize="16sp"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintHorizontal_bias="1.0"
+             app:layout_constraintStart_toEndOf="@+id/button_otaqtk_animes"
+             app:layout_constraintTop_toTopOf="parent" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="124dp"
+          android:layout_marginStart="5dp"
+          android:layout_marginTop="12dp"
+          android:layout_marginEnd="5dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/constraintLayout7">
+
+         <androidx.constraintlayout.widget.ConstraintLayout
+             android:id="@+id/constraintLayout8"
+             android:layout_width="107dp"
+             android:layout_height="114dp"
+             android:layout_gravity="left"
+             android:layout_marginStart="7dp"
+             android:background="@drawable/otaqtk_shape"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/text_chapters_otaqtk"
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="21"
+                android:textColor="#FFFF"
+                android:textSize="42sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Chapters"
+                android:textColor="#FFFF"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_chapters_otaqtk"
+                app:layout_constraintVertical_bias="0.0" />
+         </androidx.constraintlayout.widget.ConstraintLayout>
+
+         <androidx.constraintlayout.widget.ConstraintLayout
+             android:layout_width="107dp"
+             android:layout_height="114dp"
+             android:layout_gravity="left"
+             android:layout_marginStart="3dp"
+             android:layout_marginEnd="3dp"
+             android:background="@drawable/otaqtk_shape"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toStartOf="@+id/constraintLayout9"
+             app:layout_constraintStart_toEndOf="@+id/constraintLayout8"
+             app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/text_animes_otaqtk"
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="12"
+                android:textColor="#D8315B"
+                android:textSize="42sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Animes"
+                android:textColor="#D8315B"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_animes_otaqtk"
+                app:layout_constraintVertical_bias="0.0" />
+
+         </androidx.constraintlayout.widget.ConstraintLayout>
+
+         <androidx.constraintlayout.widget.ConstraintLayout
+             android:id="@+id/constraintLayout9"
+             android:layout_width="107dp"
+             android:layout_height="114dp"
+             android:layout_gravity="left"
+             android:layout_marginEnd="7dp"
+             android:background="@drawable/otaqtk_shape"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/readed_text_otaqtk"
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="8"
+                android:textColor="#3E92CC"
+                android:textSize="42sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="17dp"
+                android:src="@drawable/ic_colored_eye"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/readed_text_otaqtk" />
+         </androidx.constraintlayout.widget.ConstraintLayout>
+      </androidx.constraintlayout.widget.ConstraintLayout>
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
