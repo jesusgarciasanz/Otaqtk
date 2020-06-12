@@ -12,7 +12,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout6"
             android:layout_width="match_parent"
-            android:layout_height="62dp"
+            android:layout_height="82dp"
             android:background="@drawable/topbar_shape"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,7 @@
                 android:id="@+id/button_wanted_animes"
                 android:layout_width="167dp"
                 android:layout_height="43dp"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="16dp"
                 android:background="@drawable/selected_button_shape"
                 android:fontFamily="@font/roboto"
                 android:text="Animes"
@@ -58,7 +58,7 @@
                 android:layout_width="167dp"
                 android:layout_height="43dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/unselected_button_shape"
                 android:fontFamily="@font/roboto"
                 android:text="Mangas"
@@ -66,7 +66,7 @@
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.807"
                 app:layout_constraintStart_toEndOf="@+id/button_wanted_animes"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>

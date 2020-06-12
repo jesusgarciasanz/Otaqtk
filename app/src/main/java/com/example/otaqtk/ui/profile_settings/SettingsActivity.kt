@@ -8,6 +8,7 @@ import com.example.otaqtk.R
 import com.example.otaqtk.databinding.ActivitySettingsBinding
 import com.example.otaqtk.ui.edit_profile.EditProfileActivity
 import com.example.otaqtk.ui.login.LoginActivity
+import com.example.otaqtk.ui.terms_conditions.TermsActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class SettingsActivity : AppCompatActivity() {
@@ -30,6 +31,12 @@ class SettingsActivity : AppCompatActivity() {
         }
         binding.accConfigurationButton.setOnClickListener {
             startActivity(Intent(this, EditProfileActivity::class.java))
+        }
+        binding.termsConditionsButton.setOnClickListener {
+            startActivity(Intent(this, TermsActivity::class.java))
+        }
+        binding.buttonBackSetting.setOnClickListener {
+            finish()
         }
     }
 }
