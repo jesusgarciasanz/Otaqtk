@@ -11,20 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.details.manga_info.MangaInfoActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ui.details.chapter_info.ChapterInfoActivity"></activity>
+        <activity android:name=".ui.details.manga_info.MangaInfoActivity"></activity>
         <activity android:name=".ui.terms_conditions.TermsActivity" />
         <activity android:name=".ui.edit_profile.EditProfileActivity" />
         <activity android:name=".ui.profile_settings.SettingsActivity" />
         <activity android:name=".ui.home.HomeActivity" />
         <activity android:name=".ui.details.detail_volume.DetailVolumeActivity" />
         <activity android:name=".ui.splash_screen.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".ui.details.detail_manga.DetailMangaActivity" />
         <activity android:name=".ui.register.RegisterActivity" />

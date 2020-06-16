@@ -46,7 +46,7 @@
 
         <LinearLayout
             android:id="@+id/acc_configuration_button"
-            android:layout_width="335dp"
+            android:layout_width="315dp"
             android:layout_height="42sp"
             android:layout_marginTop="56dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +73,7 @@
 
         <View
             android:id="@+id/view"
-            android:layout_width="350dp"
+            android:layout_width="330dp"
             android:layout_height="1dp"
             android:layout_marginTop="4dp"
             android:background="#FDFDFD"
@@ -84,7 +84,7 @@
 
         <LinearLayout
             android:id="@+id/terms_conditions_button"
-            android:layout_width="335dp"
+            android:layout_width="325dp"
             android:layout_height="42sp"
             android:layout_marginTop="36dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -106,7 +106,7 @@
 
         <View
             android:id="@+id/view2_settings"
-            android:layout_width="350dp"
+            android:layout_width="330dp"
             android:layout_height="1dp"
             android:layout_marginTop="4dp"
             android:background="#FDFDFD"
@@ -117,7 +117,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/button_logOut"
-            android:layout_width="375dp"
+            android:layout_width="335dp"
             android:layout_height="67dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/login_button"
