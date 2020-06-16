@@ -5,17 +5,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#121E3A">
+    android:background="@android:color/transparent">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="107dp"
-        android:layout_height="147dp"
-        android:layout_margin="5dp"
-        android:backgroundTint="@color/colorPrimary">
+        android:layout_height="150dp"
+        app:cardCornerRadius="10dp"
+        app:strokeColor="@color/blueText"
+        app:strokeWidth="3dp"
+       android:layout_margin="5dp"
+        android:theme="@style/Theme.MaterialComponents.Light"
+        app:cardBackgroundColor="@android:color/transparent">
          <androidx.constraintlayout.widget.ConstraintLayout
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:background="@drawable/card_shape">
+             >
 
              <com.google.android.material.imageview.ShapeableImageView
                  android:id="@+id/rated_card_image"
@@ -62,9 +66,9 @@
                      app:layout_constraintHorizontal_bias="0.0"
                      app:layout_constraintStart_toEndOf="@+id/textView10"
                      app:layout_constraintTop_toTopOf="parent"
-                     app:layout_constraintVertical_bias="0.6" />
+                     app:layout_constraintVertical_bias="0.6"/>
              </androidx.constraintlayout.widget.ConstraintLayout>
          </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>

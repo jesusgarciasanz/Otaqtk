@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="107dp"
+        android:layout_height="147dp"
+        app:strokeColor="@color/blueText"
+        app:cardCornerRadius="10dp"
+        app:strokeWidth="3dp"
+        android:layout_margin="5dp"
+        android:theme="@style/Theme.MaterialComponents.Light"
+        android:background="@android:color/transparent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/chapter_card_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/kimetsutest"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/ratingRoundImage"/>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

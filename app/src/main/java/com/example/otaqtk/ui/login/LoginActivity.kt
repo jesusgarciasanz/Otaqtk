@@ -29,7 +29,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
-
     private lateinit var callbackManager: CallbackManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -117,9 +116,15 @@ class LoginActivity : AppCompatActivity() {
         finish()
     }
 
+    //LOGIN PERSISTENTE
+    public override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+        updateUI(currentUser)
+    }
+
     private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null) {
-            Toast.makeText(application, "Welcome " + currentUser.email, Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, HomeActivity::class.java))
             finish()
         } else {
@@ -157,6 +162,7 @@ class LoginActivity : AppCompatActivity() {
 
             }
     }
+
 
     /*    private fun signInWithFAcebook(){
         binding.buttonLoginFacebook.setReadPermissions("email", "public_profile")

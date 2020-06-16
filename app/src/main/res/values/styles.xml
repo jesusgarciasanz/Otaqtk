@@ -19,7 +19,11 @@
     <style name="ratingRoundImage" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">10dp</item>
-        <item name="strokeWidth">2dp</item>
-        <item name="strokeColor">#3E92CC</item>
+    </style>
+
+    <style name="roundedBackgroundImage" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeBottomLeft">15dp</item>
+        <item name="cornerSizeBottomRight">15dp</item>
     </style>
 </resources>
