@@ -11,6 +11,7 @@ import com.example.otaqtk.R
 import com.example.otaqtk.databinding.ActivityHomeBinding
 import com.example.otaqtk.databinding.ActivityRegisterBinding
 import com.example.otaqtk.ui.home.HomeActivity
+import com.example.otaqtk.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class RegisterActivity : AppCompatActivity() {
@@ -27,6 +28,10 @@ class RegisterActivity : AppCompatActivity() {
     private fun initListeners() {
         binding.buttonCreateAcc.setOnClickListener {
             checkRegister()
+        }
+        binding.buttonGotoLogin.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
 
     }

@@ -21,224 +21,272 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/background_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="183dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/background_test"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:shapeAppearanceOverlay="@style/roundedBackgroundImage" />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/background_image"
+                android:layout_width="match_parent"
+                android:layout_height="183dp"
+                android:alpha="0.5"
+                android:scaleType="centerCrop"
+                android:src="@drawable/background_test"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/roundedBackgroundImage" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/collencting_layout"
-                    android:layout_width="108dp"
-                    android:layout_height="27dp"
-                    android:layout_marginBottom="28dp"
-                    android:background="@drawable/collecting_shape"
-                    app:layout_constraintBottom_toBottomOf="@+id/background_image"
-                    app:layout_constraintEnd_toEndOf="parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/collencting_layout"
+                android:layout_width="108dp"
+                android:layout_height="27dp"
+                android:layout_marginBottom="8dp"
 
-                    <ImageView
-                        android:id="@+id/imageView7"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:layout_marginStart="16dp"
-                        android:src="@drawable/ic_otaq_big"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                android:background="@drawable/collecting_shape"
+                app:layout_constraintBottom_toTopOf="@+id/manga_info_name"
+                app:layout_constraintEnd_toEndOf="parent">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="Collecting"
-                        android:textColor="#FFFF"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.571"
-                        app:layout_constraintStart_toEndOf="@+id/imageView7"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/info_finished_shape"
-                    android:layout_width="89dp"
-                    android:layout_height="27dp"
-                    android:layout_marginBottom="12dp"
-                    android:background="@drawable/finished_shape"
-                    app:layout_constraintBottom_toTopOf="@+id/collencting_layout"
-                    app:layout_constraintEnd_toEndOf="@+id/background_image">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="Finished"
-                        android:textColor="#FFFF"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/image_manga_info"
-                    android:layout_width="129dp"
-                    android:layout_height="178dp"
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="88dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/kimetsutest"
+                    android:src="@drawable/ic_otaq_big"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:shapeAppearanceOverlay="@style/roundedImageVolume" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/manga_info_name"
-                    android:layout_width="380dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:autoSizeMaxTextSize="32sp"
-                    android:autoSizeMinTextSize="12sp"
-                    android:autoSizeStepGranularity="2sp"
-                    android:autoSizeTextType="uniform"
-                    android:breakStrategy="simple"
                     android:fontFamily="@font/roboto_medium"
-                    android:singleLine="false"
-                    android:text="Kimetsu no yaiba"
-                    android:textColor="#FDFDFD"
-                    android:textSize="28sp"
+                    android:text="Collecting"
+                    android:textColor="#FFFF"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintHorizontal_bias="0.571"
+                    app:layout_constraintStart_toEndOf="@+id/imageView7"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/info_finished_shape"
+                android:layout_width="89dp"
+                android:layout_height="27dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/finished_shape"
+                app:layout_constraintBottom_toTopOf="@+id/collencting_layout"
+                app:layout_constraintEnd_toEndOf="@+id/background_image">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Finished"
+                    android:textColor="#FFFF"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/image_manga_info" />
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image_manga_info"
+                android:layout_width="129dp"
+                android:layout_height="178dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="56dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/kimetsutest"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/roundedImageVolume" />
+
+            <TextView
+                android:id="@+id/manga_info_name"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:autoSizeMaxTextSize="28sp"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeStepGranularity="2sp"
+                android:autoSizeTextType="uniform"
+                android:breakStrategy="simple"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Kimetsu no yaiba"
+                android:textColor="#FDFDFD"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/background_image"
+                app:layout_constraintStart_toEndOf="@+id/image_manga_info" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout33"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toEndOf="@+id/image_manga_info"
+                app:layout_constraintTop_toBottomOf="@+id/background_image">
 
                 <ImageView
                     android:id="@+id/imageView5"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_width="15dp"
+                    android:layout_height="14dp"
+                    android:layout_marginStart="4dp"
                     android:src="@drawable/ic_star"
-                    app:layout_constraintStart_toEndOf="@+id/image_manga_info"
-                    app:layout_constraintTop_toBottomOf="@+id/background_image" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.4" />
 
                 <TextView
                     android:id="@+id/manga_info_rating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="4dp"
                     android:fontFamily="@font/roboto_medium"
                     android:text="4.8"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="20sp"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView5"
-                    app:layout_constraintTop_toBottomOf="@+id/background_image" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <ImageView
-                    android:id="@+id/manga_info_like"
-                    android:layout_width="19dp"
-                    android:layout_height="19dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="40dp"
-                    android:src="@drawable/ic_like"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/background_image" />
+            <ImageView
+                android:id="@+id/manga_info_like"
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="36dp"
+                android:src="@drawable/ic_like"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/background_image" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toEndOf="@+id/image_manga_info"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout33">
 
                 <ImageView
                     android:id="@+id/imageView6"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="4dp"
                     android:src="@drawable/ic_baseline_calendar_today_24"
-                    app:layout_constraintStart_toEndOf="@+id/image_manga_info"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
+                    android:id="@+id/manga_info_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="18dp"
+                    android:layout_marginStart="4dp"
                     android:fontFamily="@font/roboto_medium"
                     android:text="21-2-2015"
                     android:textColor="#31D885"
-                    android:textSize="15sp"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView6"
-                    app:layout_constraintTop_toBottomOf="@+id/manga_info_rating" />
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/manga_info_description"
+                android:layout_width="347dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:autoSizeMaxTextSize="16sp"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeStepGranularity="2sp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/roboto"
+                android:maxLines="4"
+                android:text="@string/example_text_info"
+                android:textColor="#FDFDFD"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_manga_info" />
+
+            <TextView
+                android:id="@+id/button_more_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="@string/more_info"
+                android:textColor="#3E92CC"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/manga_info_description" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout18"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button_more_info">
 
                 <TextView
-                    android:id="@+id/manga_info_description"
-                    android:layout_width="347dp"
-                    android:layout_height="70dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="16dp"
-                    android:autoSizeMaxTextSize="16sp"
-                    android:autoSizeMinTextSize="12sp"
-                    android:autoSizeStepGranularity="2sp"
-                    android:autoSizeTextType="uniform"
-                    android:fontFamily="@font/roboto"
-                    android:maxLines="4"
-                    android:text="@string/example_text_info"
-                    android:textColor="#FDFDFD"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.333"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/manga_info_name" />
-
-                <TextView
-                    android:id="@+id/button_more_info"
+                    android:id="@+id/textView22"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto"
-                    android:text="@string/more_info"
-                    android:textColor="#3E92CC"
-                    android:textSize="13sp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/collection"
+                    android:textColor="@color/blueText"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/manga_info_description" />
-
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout18"
-                    android:layout_width="100dp"
+                    android:id="@+id/button_see_all_mangainfo"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/see_all_shape"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/button_more_info">
 
                     <TextView
-                        android:id="@+id/textView22"
+                        android:id="@+id/textView33"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="@string/collection"
-                        android:textColor="#FDFDFD"
+                        android:layout_marginStart="4dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/all"
+                        android:textColor="@color/textColor"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
 
                     <ImageView
                         android:layout_width="6dp"
                         android:layout_height="10dp"
-                        android:layout_marginStart="4dp"
+                        android:layout_marginStart="8dp"
                         android:rotation="180"
                         android:src="@drawable/ic_back"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/textView22"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintStart_toEndOf="@+id/textView33"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.454" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -277,9 +325,9 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
+                    android:id="@+id/recycler_manga_info"
                     android:layout_width="0dp"
-                    android:layout_height="142dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -291,16 +339,17 @@
                     android:id="@+id/buttin_haveit_info"
                     android:layout_width="337dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="28dp"
+                    android:layout_marginTop="104dp"
                     android:background="@drawable/haveit_shape"
                     android:fontFamily="@font/roboto_medium"
                     android:text="I have all!!"
                     android:textAllCaps="false"
-                    android:textColor="#FFFF"
+                    android:textColor="#000"
                     android:textSize="21sp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.567"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout17" />
 
                 <TextView
                     android:id="@+id/textView23"

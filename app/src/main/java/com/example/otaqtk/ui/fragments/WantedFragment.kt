@@ -2,6 +2,7 @@ package com.example.otaqtk.ui.fragments
 
 import android.annotation.SuppressLint
 import android.content.res.Resources
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -36,7 +37,6 @@ class WantedFragment : Fragment() {
         layoutManager = GridLayoutManager(activity, 3)
         binding.recyclerWanted.hasFixedSize()
         binding.recyclerWanted.layoutManager = layoutManager
-
         binding.recyclerWanted
         val mangas = ArrayList<Manga>()
         val mangasRated = ArrayList<RatedMangas>()
@@ -56,21 +56,29 @@ class WantedFragment : Fragment() {
     private fun initListeners() {
         binding.buttonwantedMangas.setOnClickListener {
             selectedMangaStyle()
+            binding.buttonwantedMangas.isEnabled = false
+            binding.buttonWantedAnimes.isEnabled = true
         }
         binding.buttonWantedAnimes.setOnClickListener {
             selectedAnimeStyle()
+            binding.buttonWantedAnimes.isEnabled = false
+            binding.buttonwantedMangas.isEnabled = true
         }
     }
 
     //Button Styles
     private fun selectedAnimeStyle() {
-        binding.buttonWantedAnimes.setBackgroundResource(R.drawable.selected_button_shape)
+        binding.buttonWantedAnimes.setBackgroundResource(R.drawable.buttons_shape)
+        binding.buttonWantedAnimes.setTextColor(Color.parseColor("#3E92CC"))
         binding.buttonwantedMangas.setBackgroundResource(R.drawable.unselected_button_shape)
+        binding.buttonwantedMangas.setTextColor(Color.parseColor("#FDFDFD"))
     }
 
     private fun selectedMangaStyle() {
+        binding.buttonwantedMangas.setBackgroundResource(R.drawable.buttons_shape)
+        binding.buttonwantedMangas.setTextColor(Color.parseColor("#3E92CC"))
         binding.buttonWantedAnimes.setBackgroundResource(R.drawable.unselected_button_shape)
-        binding.buttonwantedMangas.setBackgroundResource(R.drawable.selected_button_shape)
+        binding.buttonWantedAnimes.setTextColor(Color.parseColor("#FDFDFD"))
     }
 
 }
