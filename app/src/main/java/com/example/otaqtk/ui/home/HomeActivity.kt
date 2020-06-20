@@ -2,6 +2,7 @@ package com.example.otaqtk.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.otaqtk.R
@@ -28,6 +29,8 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
         binding.lifecycleOwner = this
+
+
         binding.bottomMenu.itemIconTintList = null
 
 

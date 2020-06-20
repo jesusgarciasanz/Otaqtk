@@ -12,7 +12,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout13"
             android:layout_width="match_parent"
-            android:layout_height="92dp"
+            android:layout_height="67dp"
             android:background="@drawable/topbar_shape"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +24,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="Settings"
                 android:textColor="#FDFDFD"
-                android:textSize="28sp"
+                android:textSize="21sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.407"
@@ -44,18 +44,27 @@
                  />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <View
+            android:layout_width="315dp"
+            android:layout_height="2dp"
+            android:background="#DEDEDE"
+            app:layout_constraintBottom_toTopOf="@+id/acc_configuration_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <LinearLayout
             android:id="@+id/acc_configuration_button"
             android:layout_width="315dp"
             android:layout_height="42sp"
             android:layout_marginTop="56dp"
+            android:background="@drawable/information_shape"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout13">
 
             <ImageView
-                android:layout_width="23dp"
-                android:layout_height="28dp"
+                android:layout_width="16dp"
+                android:layout_height="19dp"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:src="@drawable/ic_profile_outline_gray" />
@@ -73,10 +82,9 @@
 
         <View
             android:id="@+id/view"
-            android:layout_width="330dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="4dp"
-            android:background="#FDFDFD"
+            android:layout_width="315dp"
+            android:layout_height="2dp"
+            android:background="#DEDEDE"
             android:foregroundGravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -84,13 +92,19 @@
 
         <LinearLayout
             android:id="@+id/terms_conditions_button"
-            android:layout_width="325dp"
+            android:layout_width="315dp"
             android:layout_height="42sp"
-            android:layout_marginTop="36dp"
+            android:background="@drawable/information_shape"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view">
 
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="19dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:src="@drawable/ic_list" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -106,10 +120,9 @@
 
         <View
             android:id="@+id/view2_settings"
-            android:layout_width="330dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="4dp"
-            android:background="#FDFDFD"
+            android:layout_width="315dp"
+            android:layout_height="2dp"
+            android:background="#DEDEDE"
             android:foregroundGravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
