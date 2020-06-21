@@ -2,6 +2,7 @@ package com.example.otaqtk.api
 
 import com.example.otaqtk.kitsu_pojo.Data
 import com.example.otaqtk.kitsu_pojo.DataArray
+import com.example.otaqtk.kitsu_pojo.DataClass
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -10,16 +11,13 @@ import retrofit2.http.Path
 interface Api {
 
     //GET TRENDING MANGAS
-    @GET("trending/manga")
-    suspend fun getTrendingManga(): Response<DataArray>
-
-    //GET TRENDING ANIME
-    @GET("trending/anime")
-    suspend fun getTrendingAnimes(): Response<DataArray>
+    @GET("trending/{type}")
+    suspend fun getTrendingData(@Path("type") type: String): Response<DataArray>
 
     //GET MANGAS BY ID
-    @GET("manga/{id}")
-    suspend fun getMangaById(@Path("id") id: String): Response<Data>
+    @GET("{type}/{id}")
+    suspend fun getDataByID(@Path("id") id: String, @Path("type") type: String): Response<DataClass>
+
 
 
     /*@GET("categories")

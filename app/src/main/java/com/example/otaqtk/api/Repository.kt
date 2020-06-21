@@ -18,6 +18,7 @@ class Repository {
                     .newBuilder()
                     .addInterceptor(
                         LoggingInterceptor.Builder()
+                            .addHeader("Accept", "application/vnd.api+json")
                             .addHeader("Content-Type", "application/vnd.api+json")
                             .build()
                     )
@@ -28,13 +29,11 @@ class Repository {
     }
 
     //GET TRENDING MANNGAS
-    suspend fun getTrendingManga() = kitsuClient.getTrendingManga()
-
-    //GET TRENDING ANIMES
-    suspend fun getTrendingAnimes() = kitsuClient.getTrendingAnimes()
+    suspend fun getTrendingData(type: String) = kitsuClient.getTrendingData(type)
 
     //GET MANGAS BY ID
-    suspend fun getMangaById(id: String) = kitsuClient.getMangaById(id)
+    suspend fun getMangaById(id: String, type: String) = kitsuClient.getDataByID(id, type)
+
 
     //GET CATEGORIES
    // suspend fun getCategories() = kitsuClient.getCategories()

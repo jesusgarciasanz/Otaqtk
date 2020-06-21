@@ -2,10 +2,10 @@ package com.example.otaqtk.ui.details.manga_info
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.otaqtk.R
+import com.example.otaqtk.api.Config
 import com.example.otaqtk.api.Repository
 import com.example.otaqtk.databinding.ActivityMangaInfoBinding
 import com.squareup.picasso.Picasso
@@ -27,10 +27,10 @@ class MangaInfoActivity : AppCompatActivity() {
         Toast.makeText(this, id, Toast.LENGTH_SHORT).show()
 
         getMangaById(id)
-        initListrsners()
+        initListeners()
     }
 
-    private fun initListrsners() {
+    private fun initListeners() {
         binding.buttonMoreInfo.setOnClickListener {
 
         }
@@ -38,21 +38,20 @@ class MangaInfoActivity : AppCompatActivity() {
 
     private fun getMangaById(id: String) {
         CoroutineScope(Dispatchers.Main).launch {
-            Log.d("identificador", id)
-            val call = repository.getMangaById("26004")
+            val call = repository.getMangaById(id, Config.MANGA_TYPE)
             val data = call.body()
             if (data != null) {
-
-                    //Picasso.get().load(data.attributes.posterImage.large).fit().centerCrop().into(binding.backgroundImage)
-                   /* binding.mangaInfoName.text = data.attributes.titles.enJp
-                    binding.mangaInfoDescription.text = data.attributes.synopsis
-                    binding.mangaInfoRating.text = data.attributes.averageRating
-                    binding.mangaInfoDate.text = data.attributes.startDate
-                    Log.d("titulillo", data.attributes.title + "")*/
-
-            }else{
-                Log.d("dataerror", "void data")
+                Picasso.get().load(data.data.attributes.posterImage.large).fit().centerCrop()
+                    .into(binding.imageMangaInfo)
+                if (data.data.attributes.coverImage.large != null) {
+                    Picasso.get().load(data.data.attributes.coverImage.original).fit().centerCrop()
+                        .into(binding.backgroundImage)
+                }
+                binding.mangaInfoName.text = data.data.attributes.titles.en
+                binding.mangaInfoDescription.text = data.data.attributes.synopsis
+                binding.mangaInfoRating.text = data.data.attributes.averageRating
+                binding.mangaInfoDate.text = data.data.attributes.startDate
+            }
         }
     }
-}
 }

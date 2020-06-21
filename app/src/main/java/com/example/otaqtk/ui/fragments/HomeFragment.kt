@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.otaqtk.R
 import com.example.otaqtk.adapters.ClickListener
 import com.example.otaqtk.adapters.TrendingMangasAdapter
+import com.example.otaqtk.api.Config
 import com.example.otaqtk.api.Repository
 import com.example.otaqtk.databinding.FragmentHomeFragmentBinding
 import com.example.otaqtk.kitsu_pojo.CategoryData
@@ -88,7 +89,7 @@ class HomeFragment : Fragment() {
 
     fun getTrendingMangas() {
         CoroutineScope(Dispatchers.Main).launch {
-            val call = repository.getTrendingManga()
+            val call = repository.getTrendingData(Config.MANGA_TYPE)
             val trending = call.body()
             if (trending != null) {
                 trendingList.addAll(trending.data)
@@ -103,7 +104,7 @@ class HomeFragment : Fragment() {
 
     fun getTrendingAnimes() {
         CoroutineScope(Dispatchers.Main).launch {
-            val call = repository.getTrendingAnimes()
+            val call = repository.getTrendingData(Config.ANIME_TYPE)
             val trendig = call.body()
             if (trendig != null) {
                 trendingList.addAll(trendig.data)
