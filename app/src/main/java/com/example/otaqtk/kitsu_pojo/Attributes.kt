@@ -4,59 +4,59 @@ import com.squareup.moshi.Json
 
 data class Attributes(
     @Json(name = "createdAt")
-    val createdAt: String,
+    val createdAt: String?,
     @Json(name = "updatedAt")
-    val updatedAt: String,
+    val updatedAt: String?,
     @Json(name = "slug")
-    val slug: String,
+    val slug: String?,
     @Json(name = "synopsis")
-    val synopsis: String,
+    val synopsis: String?,
     @Json(name = "coverImageTopOffset")
-    val coverImageTopOffset: Long,
+    val coverImageTopOffset: Long?,
     @Json(name = "titles")
-    val titles: Titles,
+    val titles: Titles?,
     @Json(name = "title")
-    val title: String,
+    val title: String?,
     @Json(name = "canonicalTitle")
-    val canonicalTitle: String,
+    val canonicalTitle: String?,
     @Json(name = "abbreviatedTitles")
-    val abbreviatedTitles: ArrayList<String>,
+    val abbreviatedTitles: ArrayList<String>?,
     @Json(name = "averageRating")
-    val averageRating: String,
+    val averageRating: String?,
     @Json(name = "userCount")
-    val userCount: Long,
+    val userCount: Long?,
     @Json(name = "favoritesCount")
-    val favoritesCount: Long,
+    val favoritesCount: Long?,
     @Json(name = "startDate")
-    val startDate: String,
+    val startDate: String?,
     @Json(name = "endDate")
-    val endDate: String,
+    val endDate: String?,
     @Json(name = "nextRelease")
-    val nextRelease: String,
+    val nextRelease: String?,
     @Json(name = "popularityRank")
-    val popularityRank: Long,
+    val popularityRank: Long?,
     @Json(name = "ratingRank")
-    val ratingRank: Long,
+    val ratingRank: Long?,
     @Json(name = "ageRating")
-    val ageRating: String,
+    val ageRating: String?,
     @Json(name = "ageRatingGuide")
-    val ageRatingGuide: String,
+    val ageRatingGuide: String?,
     @Json(name = "subtype")
-    val subtype: String,
+    val subtype: String?,
     @Json(name = "status")
-    val status: String,
+    val status: String?,
     @Json(name = "tba")
-    val tba: String,
+    val tba: String?,
     @Json(name = "posterImage")
-    val posterImage: PosterImage,
+    val posterImage: PosterImage?,
     @Json(name = "coverImage")
-    val coverImage: CoverImage,
+    val coverImage: CoverImage?,
     @Json(name = "chapterCount")
-    val chapterCount: Long,
+    val chapterCount: Long?,
     @Json(name = "volumeCount")
-    val volumeCount: Long,
+    val volumeCount: Long?,
     @Json(name = "serialization")
-    val serialization: String,
+    val serialization: String?,
     @Json(name = "mangaType")
-    val mangaType: String
+    val mangaType: String?
 )

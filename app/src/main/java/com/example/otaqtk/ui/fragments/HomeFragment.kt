@@ -20,6 +20,7 @@ import com.example.otaqtk.databinding.FragmentHomeFragmentBinding
 import com.example.otaqtk.kitsu_pojo.CategoryData
 import com.example.otaqtk.kitsu_pojo.Data
 import com.example.otaqtk.ui.details.manga_info.MangaInfoActivity
+import com.example.otaqtk.ui.search.SearchActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,8 +31,11 @@ class HomeFragment : Fragment() {
     private val repository: Repository = Repository()
     private lateinit var binding: FragmentHomeFragmentBinding
     private lateinit var trendingList: MutableList<Data>
+    private lateinit var popularList: MutableList<Data>
     private lateinit var categoriesList: MutableList<CategoryData>
     private lateinit var adapter: TrendingMangasAdapter
+    private lateinit var popularAdapter: TrendingMangasAdapter
+    private lateinit var type: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,51 +45,78 @@ class HomeFragment : Fragment() {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_home_fragment, container, false)
         trendingList = arrayListOf()
+        popularList = arrayListOf()
         categoriesList = arrayListOf()
-
+        type = Config.ANIME_TYPE
         getTrendingAnimes()
+        getPopularAnime()
         // getCategories()
 
 
         inflateRecycler()
+        popularRecycler()
         initListeners()
         return binding.root
     }
 
-    private fun inflateRecycler() {
-        adapter = TrendingMangasAdapter(trendingList, object : ClickListener{
-            override fun onClick(vista: View, index: Int) {
-                val intent= Intent(activity, MangaInfoActivity::class.java)
-                intent.putExtra("id",trendingList.get(index).id)
-                startActivity(intent)
-
-                //Toast.makeText(activity, trendingList.get(index).id, Toast.LENGTH_SHORT).show()
-            }
-
-        })
-        val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        binding.recyclerTrendingHome.setHasFixedSize(true)
-        binding.recyclerTrendingHome.layoutManager = layoutManager
-        binding.recyclerTrendingHome.adapter = adapter
-    }
 
     private fun initListeners() {
         binding.buttonAnimeHome.setOnClickListener {
             selectedAnimeStyle()
             trendingList.clear()
             getTrendingAnimes()
+            popularList.clear()
+            getPopularAnime()
+            type = Config.ANIME_TYPE
             binding.buttonAnimeHome.isEnabled = false
             binding.buttonMangasHome.isEnabled = true
+            binding.searchText.hint = "Search anime"
         }
         binding.buttonMangasHome.setOnClickListener {
             selectedMangasStyle()
             trendingList.clear()
             getTrendingMangas()
+            popularList.clear()
+            getPopularManga()
+            type = Config.MANGA_TYPE
             binding.buttonMangasHome.isEnabled = false
             binding.buttonAnimeHome.isEnabled = true
+            binding.searchText.hint = "Search manga"
+        }
+
+        binding.searchBarHome.setOnClickListener {
+            val intent = Intent(activity, SearchActivity::class.java)
+            intent.putExtra("type", type)
+            startActivity(intent)
+        }
+        binding.searchText.setOnClickListener {
+            val intent = Intent(activity, SearchActivity::class.java)
+            intent.putExtra("type", type)
+            startActivity(intent)
         }
     }
 
+    fun getPopularManga() {
+        CoroutineScope(Dispatchers.Main).launch {
+            val call = repository.getPopularData(Config.MANGA_TYPE)
+            val popular = call.body()
+            if (popular != null) {
+                popularList.addAll(popular.data)
+                popularAdapter.notifyDataSetChanged()
+            }
+        }
+    }
+
+    fun getPopularAnime() {
+        CoroutineScope(Dispatchers.Main).launch {
+            val call = repository.getPopularData(Config.ANIME_TYPE)
+            val popular = call.body()
+            if (popular != null) {
+                popularList.addAll(popular.data)
+                popularAdapter.notifyDataSetChanged()
+            }
+        }
+    }
 
     fun getTrendingMangas() {
         CoroutineScope(Dispatchers.Main).launch {
@@ -94,8 +125,6 @@ class HomeFragment : Fragment() {
             if (trending != null) {
                 trendingList.addAll(trending.data)
                 adapter.notifyDataSetChanged()
-                Log.d("tren", trendingList[0].attributes.canonicalTitle)
-                Log.d("trenimage", trendingList[0].attributes.posterImage.medium)
             } else {
                 Log.d("listerror", "lista vacia")
             }
@@ -114,6 +143,39 @@ class HomeFragment : Fragment() {
                 Log.d("animeerror", "Lista de animes vacia")
             }
         }
+    }
+
+    private fun popularRecycler() {
+        popularAdapter = TrendingMangasAdapter(popularList, object : ClickListener {
+            override fun onClick(vista: View, index: Int) {
+                val intent = Intent(activity, MangaInfoActivity::class.java)
+                intent.putExtra("id", popularList.get(index).id)
+                intent.putExtra("type", type)
+                startActivity(intent)
+            }
+
+        })
+        val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        binding.recylerMostPopularHome.setHasFixedSize(true)
+        binding.recylerMostPopularHome.layoutManager = layoutManager
+        binding.recylerMostPopularHome.adapter = popularAdapter
+    }
+
+    private fun inflateRecycler() {
+        adapter = TrendingMangasAdapter(trendingList, object : ClickListener {
+            override fun onClick(vista: View, index: Int) {
+                val intent = Intent(activity, MangaInfoActivity::class.java)
+                intent.putExtra("id", trendingList.get(index).id)
+                intent.putExtra("type", type)
+                startActivity(intent)
+
+                //Toast.makeText(activity, trendingList.get(index).id, Toast.LENGTH_SHORT).show()
+            }
+        })
+        val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerTrendingHome.setHasFixedSize(true)
+        binding.recyclerTrendingHome.layoutManager = layoutManager
+        binding.recyclerTrendingHome.adapter = adapter
     }
 
     /* fun getCategories(){

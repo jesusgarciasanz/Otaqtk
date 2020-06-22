@@ -30,8 +30,7 @@
                 android:src="@drawable/background_test"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/roundedBackgroundImage" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/collencting_layout"
@@ -96,7 +95,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="56dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/kimetsutest"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/roundedImageVolume" />
@@ -113,7 +111,6 @@
                 android:autoSizeTextType="uniform"
                 android:breakStrategy="simple"
                 android:fontFamily="@font/roboto_medium"
-                android:text="Kimetsu no yaiba"
                 android:textColor="#FDFDFD"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@+id/background_image"
@@ -145,7 +142,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="4.8"
                     android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -189,7 +185,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="21-2-2015"
+
                     android:textColor="#31D885"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -197,25 +193,25 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/manga_info_description"
-                android:layout_width="347dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="16dp"
-                android:autoSizeMaxTextSize="16sp"
-                android:autoSizeMinTextSize="12sp"
-                android:autoSizeStepGranularity="2sp"
-                android:autoSizeTextType="uniform"
-                android:fontFamily="@font/roboto"
-                android:maxLines="4"
-                android:text="@string/example_text_info"
-                android:textColor="#FDFDFD"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_manga_info" />
+                <TextView
+                    android:id="@+id/manga_info_description"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="10dp"
+                    android:autoSizeMaxTextSize="16sp"
+                    android:autoSizeMinTextSize="12sp"
+                    android:autoSizeStepGranularity="2sp"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/roboto"
+                    android:maxLines="4"
+
+                    android:textColor="#FDFDFD"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/image_manga_info" />
 
             <TextView
                 android:id="@+id/button_more_info"
@@ -304,7 +300,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="8"
                         android:textColor="@color/blueText"
                         android:textSize="32sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -337,9 +332,11 @@
 
                 <Button
                     android:id="@+id/buttin_haveit_info"
-                    android:layout_width="337dp"
+                    android:layout_width="0dp"
                     android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="104dp"
+                    android:layout_marginEnd="20dp"
                     android:background="@drawable/haveit_shape"
                     android:fontFamily="@font/roboto_medium"
                     android:text="I have all!!"

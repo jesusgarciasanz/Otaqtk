@@ -32,7 +32,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="Kimetsu no Yaiba"
                         android:textColor="#FFFF"
                         android:textSize="21sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,7 +57,6 @@
                     android:layout_width="355dp"
                     android:layout_height="128dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/kimetsutest"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:fontFamily="@font/roboto"
-                    android:text="@string/example_text"
+
                     android:textColor="#FFFF"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.481"
@@ -93,7 +91,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
                 <View
-                    android:id="@+id/view"
+                    android:id="@+id/view_studios"
                     android:layout_width="338dp"
                     android:layout_height="2dp"
                     android:layout_marginTop="24dp"
@@ -104,16 +102,16 @@
                     app:layout_constraintTop_toBottomOf="@+id/manga_description" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout4"
+                    android:id="@+id/constraint_studios"
                     android:layout_width="338dp"
                     android:layout_height="45dp"
                     android:background="@drawable/information_shape"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view">
+                    app:layout_constraintTop_toBottomOf="@+id/view_studios">
 
                     <TextView
-                        android:id="@+id/textView4"
+                        android:id="@+id/textView_studios"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -131,11 +129,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="72dp"
                         android:fontFamily="@font/roboto"
-                        android:text="ufotable"
                         android:textColor="@color/blueText"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/textView4"
+                        app:layout_constraintStart_toEndOf="@+id/textView_studios"
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -148,7 +145,7 @@
                     android:foregroundGravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
+                    app:layout_constraintTop_toBottomOf="@+id/constraint_studios" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout26"
@@ -178,7 +175,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="56dp"
                         android:fontFamily="@font/roboto"
-                        android:text="21"
                         android:textColor="#3E92CC"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -224,7 +220,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="84dp"
                         android:fontFamily="@font/roboto"
-                        android:text="Finished"
                         android:textColor="#D8315B"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -269,7 +264,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="60dp"
                         android:fontFamily="@font/roboto"
-                        android:text="21-02-2019"
                         android:textColor="@color/greenText"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -314,7 +308,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="68dp"
                         android:fontFamily="@font/roboto"
-                        android:text="21-02-2019"
                         android:textColor="@color/redText"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -359,7 +352,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="56dp"
                         android:fontFamily="@font/roboto"
-                        android:text="13"
                         android:textColor="@color/yellowText"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"

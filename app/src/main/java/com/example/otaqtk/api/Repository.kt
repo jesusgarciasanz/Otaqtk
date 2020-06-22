@@ -28,11 +28,17 @@ class Repository {
             .build().create(Api::class.java)
     }
 
-    //GET TRENDING MANNGAS
+    //GET TRENDING CONTENT
     suspend fun getTrendingData(type: String) = kitsuClient.getTrendingData(type)
 
-    //GET MANGAS BY ID
+    //GET CONTENT BY ID
     suspend fun getMangaById(id: String, type: String) = kitsuClient.getDataByID(id, type)
+
+    //GET PUPULAR CONTENT
+    suspend fun getPopularData(type: String) = kitsuClient.getPopularData(type)
+
+    //SEARCH CONTENT
+    suspend fun searchContent(type: String, text:String) = kitsuClient.searchContent(type, text)
 
 
     //GET CATEGORIES
