@@ -1,5 +1,6 @@
 package com.example.otaqtk.ui.login
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.util.Patterns
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.otaqtk.R
+import com.example.otaqtk.api.OtaqtkRepository
 import com.example.otaqtk.databinding.ActivityLoginBinding
 import com.example.otaqtk.ui.home.HomeActivity
 import com.example.otaqtk.ui.register.RegisterActivity
@@ -23,6 +25,9 @@ import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
 
@@ -30,6 +35,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var callbackManager: CallbackManager
+    private val otaqtkRepository: OtaqtkRepository = OtaqtkRepository()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,6 +100,7 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d("login", "signInWithEmail:success")
+                    getLoginToken()
                     val user = auth.currentUser
                     updateUI(user)
                 } else {
@@ -114,6 +122,19 @@ class LoginActivity : AppCompatActivity() {
     private fun goToRegister() {
         startActivity(Intent(this, RegisterActivity::class.java))
         finish()
+    }
+
+    private fun getLoginToken(){
+        CoroutineScope(Dispatchers.Main).launch {
+            val call = otaqtkRepository.loginToken(FirebaseAuth.getInstance().currentUser!!.uid)
+            val token = call.body()
+            if(token != null && call.code() == 200){
+                val pref = getSharedPreferences("user_token", Context.MODE_PRIVATE)
+                val editor = pref.edit()
+                editor.putString("token", token?.token)
+                editor.apply()
+            }
+        }
     }
 
     //LOGIN PERSISTENTE

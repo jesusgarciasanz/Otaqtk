@@ -3,18 +3,18 @@ import com.beust.klaxon.*
 
 data class Profile(
     @Json(name = "id")
-    val ID: String,
+    val ID: String?,
     @Json(name = "created_at")
-    val CreatedAt: String,
-    @Json(name = "uid")
-    val UID: String,
+    val CreatedAt: String?,
     @Json(name = "device_id")
-    val DeviceId: String,
+    val device_id: String,
     @Json(name = "profile_image")
-    val ProfileImage: String,
+    val profile_image: String?,
     @Json(name = "cover_image")
-    val CoverImage: String,
+    val CoverImage: String?,
     @Json(name = "is_active")
-    val IsActive: Boolean
+    val IsActive: Boolean?,
+    @Json(name = "username")
+    val username: String
 ) {
 }

@@ -7,7 +7,6 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
@@ -15,7 +14,7 @@ import com.example.otaqtk.R
 import com.example.otaqtk.adapters.ClickListener
 import com.example.otaqtk.adapters.SearchAdapter
 import com.example.otaqtk.api.Config
-import com.example.otaqtk.api.Repository
+import com.example.otaqtk.api.KitsuRepository
 import com.example.otaqtk.databinding.ActivitySearchBinding
 import com.example.otaqtk.kitsu_pojo.Data
 import com.example.otaqtk.ui.details.manga_info.MangaInfoActivity
@@ -24,21 +23,22 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class SearchActivity : AppCompatActivity() {
-    private val repository: Repository = Repository()
+    private val kitsuRepository: KitsuRepository = KitsuRepository()
     private lateinit var binding: ActivitySearchBinding
     private lateinit var resultsList: MutableList<Data>
     private lateinit var search: String
     private lateinit var searchAdapter: SearchAdapter
-    private var type: String = Config.ANIME_TYPE
+    private lateinit var type: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_search)
         resultsList = arrayListOf()
+        type = intent.getStringExtra("type")
 
+        checkType()
         searchRecycler()
-
 
         binding.searchActivityText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -59,6 +59,20 @@ class SearchActivity : AppCompatActivity() {
         initListeners()
     }
 
+    private fun checkType() {
+        if (type.equals(Config.ANIME_TYPE)) {
+            selectedAnimeStyle()
+            binding.buttonAnimeSearch.isEnabled = false
+            binding.buttonMangasSearch.isEnabled = true
+            type = Config.ANIME_TYPE
+        } else {
+            selectedMangasStyle()
+            binding.buttonMangasSearch.isEnabled = false
+            binding.buttonAnimeSearch.isEnabled = true
+            type = Config.MANGA_TYPE
+        }
+    }
+
     private fun initListeners() {
         binding.buttonAnimeSearch.setOnClickListener {
             selectedAnimeStyle()
@@ -70,7 +84,7 @@ class SearchActivity : AppCompatActivity() {
             searchContent(type, search)
         }
 
-        binding.buttonMangasSearch.setOnClickListener{
+        binding.buttonMangasSearch.setOnClickListener {
             selectedMangasStyle()
             binding.buttonMangasSearch.isEnabled = false
             binding.buttonAnimeSearch.isEnabled = true
@@ -79,11 +93,15 @@ class SearchActivity : AppCompatActivity() {
             searchAdapter.notifyDataSetChanged()
             searchContent(type, search)
         }
+
+        binding.backButtonSearch.setOnClickListener {
+            finish()
+        }
     }
 
     private fun searchContent(type: String, search: String) {
         CoroutineScope(Dispatchers.Main).launch {
-            val call = repository.searchContent(type, search)
+            val call = kitsuRepository.searchContent(type, search)
             val text = call.body()
             if (text != null) {
                 resultsList.clear()
@@ -113,12 +131,12 @@ class SearchActivity : AppCompatActivity() {
         binding.searchRecycler.adapter = searchAdapter
     }
 
-    private fun selectedAnimeStyle(){
+    private fun selectedAnimeStyle() {
         binding.buttonAnimeSearch.setBackgroundResource(R.drawable.search_button_shape)
         binding.buttonMangasSearch.setBackgroundResource(R.drawable.unselected_button_shape)
     }
 
-    private fun selectedMangasStyle(){
+    private fun selectedMangasStyle() {
         binding.buttonMangasSearch.setBackgroundResource(R.drawable.search_button_shape)
         binding.buttonAnimeSearch.setBackgroundResource(R.drawable.unselected_button_shape)
     }

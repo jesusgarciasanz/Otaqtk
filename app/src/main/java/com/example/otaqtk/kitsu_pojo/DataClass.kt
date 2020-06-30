@@ -4,7 +4,9 @@ import com.squareup.moshi.Json
 
 data class DataClass(
     @Json(name = "data")
-    val data: Data
+    val data: Data,
+    @Json(name = "included")
+    val included: List<Data>?
 ) {
 
 }

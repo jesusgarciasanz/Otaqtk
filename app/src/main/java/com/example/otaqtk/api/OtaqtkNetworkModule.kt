@@ -1,7 +1,6 @@
 package com.example.otaqtk.api
 
 import androidx.databinding.library.baseAdapters.BuildConfig
-import com.example.otaqtk.api.Config.API_URL
 import com.ihsanbal.logging.Level
 import com.ihsanbal.logging.LoggingInterceptor
 import dagger.Module
@@ -13,10 +12,9 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-
 @Module
 @Suppress("unused")
-object NetworkModule {
+object OtaqtkNetworkModule {
     /**
      * Provides the Post service implementation.
      * @param retrofit the Retrofit object used to instantiate the service
@@ -34,7 +32,7 @@ object NetworkModule {
     @JvmStatic
     internal fun provideRetrofitInterface(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(API_URL)
+            .baseUrl(Config.OTAQTK_API)
             .client(
                 OkHttpClient()
                     .newBuilder()
@@ -44,9 +42,6 @@ object NetworkModule {
                             .setLevel(Level.NONE)
                             .request("Request")
                             .response("Response")
-                            //.addHeader("Accept", "application/json")
-                            //.addHeader("Accept", "application/vnd.api+json")
-                            //.addHeader("Content-Type", "application/vnd.api+json")
                             .build()
                     )
                     .build()

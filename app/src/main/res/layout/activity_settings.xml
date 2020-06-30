@@ -104,7 +104,7 @@
                 android:layout_height="19dp"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:src="@drawable/ic_list" />
+                android:src="@drawable/ic_terms" />
 
             <TextView
                 android:layout_width="wrap_content"

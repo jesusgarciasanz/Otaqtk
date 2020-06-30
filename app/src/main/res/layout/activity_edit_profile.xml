@@ -30,7 +30,7 @@
                         android:fontFamily="@font/roboto_medium"
                         android:text="Account settings"
                         android:textColor="#FFFF"
-                        android:textSize="28sp"
+                        android:textSize="21sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.377"
@@ -50,16 +50,37 @@
                         app:layout_constraintVertical_bias="0.507" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/circleImageView2"
+                    android:layout_width="101dp"
+                    android:layout_height="101dp"
+                    android:src="@drawable/test_profile_image"
+                    android:layout_marginTop="56dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:alpha="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout14" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_save"
+                    app:layout_constraintBottom_toBottomOf="@+id/circleImageView2"
+                    app:layout_constraintEnd_toEndOf="@+id/circleImageView2"
+                    app:layout_constraintStart_toStartOf="@+id/circleImageView2"
+                    app:layout_constraintTop_toTopOf="@+id/circleImageView2" />
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout"
                     android:layout_width="320dp"
                     android:layout_height="371dp"
-                    android:layout_marginTop="72dp"
+                    android:layout_marginTop="45dp"
                     android:background="@drawable/login_register_layout"
-                    app:layout_constraintEnd_toEndOf="parent"
 
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.505"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout14">
+                    app:layout_constraintTop_toBottomOf="@+id/circleImageView2">
 
                     <LinearLayout
                         android:id="@+id/linearLayout"
@@ -74,8 +95,8 @@
                             android:layout_width="23dp"
                             android:layout_height="17dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_email"
-                            android:layout_margin="5dp"/>
+                            android:layout_margin="5dp"
+                            android:src="@drawable/ic_email" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
@@ -121,17 +142,17 @@
                             android:layout_width="23dp"
                             android:layout_height="27dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_profile_outline"
-                            android:layout_margin="10dp"/>
+                            android:layout_margin="10dp"
+                            android:src="@drawable/ic_profile_outline" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:padding="10dp"
+                            android:padding="5dp"
                             android:textColorHint="#3E92CC">
 
-                            <com.google.android.material.textfield.TextInputEditText
+                            <EditText
                                 android:id="@+id/edit_username_settings"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -213,8 +234,8 @@
                             android:layout_width="23dp"
                             android:layout_height="27dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_new_password"
-                            android:layout_margin="5dp"/>
+                            android:layout_margin="5dp"
+                            android:src="@drawable/ic_new_password" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
@@ -264,8 +285,8 @@
                             android:layout_width="23dp"
                             android:layout_height="27dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_new_password"
-                            android:layout_margin="4dp"/>
+                            android:layout_margin="4dp"
+                            android:src="@drawable/ic_new_password" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
@@ -288,64 +309,15 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout15"
-                    android:layout_width="320dp"
-                    android:layout_height="188dp"
-                    android:layout_marginTop="24dp"
-                    android:background="@drawable/login_register_layout"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:fontFamily="@font/roboto"
-                        android:text="max. 500 characters"
-                        android:textColor="#D1D1D1"
-                        android:textSize="11sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textView15"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/roboto"
-                        android:text="DESCRIPTION"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="14sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <EditText
-                        android:layout_width="297dp"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.521"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView15"
-                        app:layout_constraintVertical_bias="0.077"
-                        android:textColor="#FFFF"/>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/button_save"
                     android:layout_width="320dp"
                     android:layout_height="67dp"
-                    android:layout_marginTop="44dp"
+                    android:layout_marginTop="45dp"
                     android:background="@drawable/button_save_shape"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.494"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout15">
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
                     <TextView
                         android:id="@+id/textView14"

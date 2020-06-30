@@ -1,5 +1,6 @@
 package com.example.otaqtk.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +26,8 @@ class SearchAdapter(val results: MutableList<Data>, var listener: ClickListener)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val MyResults = results.get(position)
+        Log.d("paque", position.toString())
+
         Picasso.get().load(MyResults.attributes.posterImage?.medium).fit().centerCrop().into(holder.image)
     }
 

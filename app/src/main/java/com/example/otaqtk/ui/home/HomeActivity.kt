@@ -85,6 +85,7 @@ class HomeActivity : AppCompatActivity() {
                         if (FirebaseAuth.getInstance().currentUser != null) {
                             currentTag = TAG_FOURTH
                             fragment = ProfileFragment()
+
                             loadFragment(fragment, currentTag)
                         } else {
                             currentTag = TAG__FIFTH

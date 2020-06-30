@@ -58,5 +58,19 @@ data class Attributes(
     @Json(name = "serialization")
     val serialization: String?,
     @Json(name = "mangaType")
-    val mangaType: String?
+    val mangaType: String?,
+    @Json(name = "thumbnail")
+    val thumbnail : PosterImage?,
+    @Json (name = "number")
+    val number: Int?,
+    @Json(name = "published")
+    val published: String?,
+    @Json (name = "airdate")
+    val airdate: String?,
+    @Json(name = "seasonNumber")
+    val seasonNunber: Int?,
+    @Json(name = "volumeNumber")
+    val volumeNumber: Int?,
+    @Json(name = "length")
+    val length: String?
 )

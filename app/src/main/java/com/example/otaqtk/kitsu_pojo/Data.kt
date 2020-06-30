@@ -8,8 +8,6 @@ data class Data(
     val id: String,
     @Json(name = "type")
     val type: String,
-    @Json(name = "links")
-    val links: Links,
     @Json(name = "attributes")
     val attributes: Attributes
 ) {

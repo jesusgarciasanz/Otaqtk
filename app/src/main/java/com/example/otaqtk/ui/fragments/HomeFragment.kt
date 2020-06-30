@@ -7,20 +7,22 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.otaqtk.R
+import com.example.otaqtk.adapters.CategoryAdapter
 import com.example.otaqtk.adapters.ClickListener
 import com.example.otaqtk.adapters.TrendingMangasAdapter
 import com.example.otaqtk.api.Config
-import com.example.otaqtk.api.Repository
+import com.example.otaqtk.api.KitsuRepository
 import com.example.otaqtk.databinding.FragmentHomeFragmentBinding
-import com.example.otaqtk.kitsu_pojo.CategoryData
 import com.example.otaqtk.kitsu_pojo.Data
+import com.example.otaqtk.ui.categories.CategoryActivity
 import com.example.otaqtk.ui.details.manga_info.MangaInfoActivity
+import com.example.otaqtk.ui.mos_popular.MostPopularActivity
 import com.example.otaqtk.ui.search.SearchActivity
+import com.example.otaqtk.ui.trending.TrendingActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,33 +30,33 @@ import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
-    private val repository: Repository = Repository()
+    private val kitsuRepository: KitsuRepository = KitsuRepository()
     private lateinit var binding: FragmentHomeFragmentBinding
     private lateinit var trendingList: MutableList<Data>
     private lateinit var popularList: MutableList<Data>
-    private lateinit var categoriesList: MutableList<CategoryData>
+    private lateinit var categoriesList: MutableList<Data>
     private lateinit var adapter: TrendingMangasAdapter
     private lateinit var popularAdapter: TrendingMangasAdapter
+    private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var type: String
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_home_fragment, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_fragment, container, false)
         trendingList = arrayListOf()
         popularList = arrayListOf()
         categoriesList = arrayListOf()
         type = Config.ANIME_TYPE
+
+
         getTrendingAnimes()
         getPopularAnime()
-        // getCategories()
+        getCategories()
 
 
         inflateRecycler()
         popularRecycler()
+        categoriesAdapter()
         initListeners()
         return binding.root
     }
@@ -94,11 +96,23 @@ class HomeFragment : Fragment() {
             intent.putExtra("type", type)
             startActivity(intent)
         }
+
+        binding.buttonSeeMoreTrending.setOnClickListener {
+            val intent = Intent(activity, TrendingActivity::class.java)
+            intent.putExtra("type", type)
+            startActivity(intent)
+        }
+
+        binding.buttonSeeMorePopular.setOnClickListener {
+            val intent = Intent(activity, MostPopularActivity::class.java)
+            intent.putExtra("type", type)
+            startActivity(intent)
+        }
     }
 
     fun getPopularManga() {
         CoroutineScope(Dispatchers.Main).launch {
-            val call = repository.getPopularData(Config.MANGA_TYPE)
+            val call = kitsuRepository.getPopularData(Config.MANGA_TYPE)
             val popular = call.body()
             if (popular != null) {
                 popularList.addAll(popular.data)
@@ -109,9 +123,9 @@ class HomeFragment : Fragment() {
 
     fun getPopularAnime() {
         CoroutineScope(Dispatchers.Main).launch {
-            val call = repository.getPopularData(Config.ANIME_TYPE)
+            val call = kitsuRepository.getPopularData(Config.ANIME_TYPE)
             val popular = call.body()
-            if (popular != null) {
+            if (popular != null ) {
                 popularList.addAll(popular.data)
                 popularAdapter.notifyDataSetChanged()
             }
@@ -120,7 +134,7 @@ class HomeFragment : Fragment() {
 
     fun getTrendingMangas() {
         CoroutineScope(Dispatchers.Main).launch {
-            val call = repository.getTrendingData(Config.MANGA_TYPE)
+            val call = kitsuRepository.getTrendingData(Config.MANGA_TYPE)
             val trending = call.body()
             if (trending != null) {
                 trendingList.addAll(trending.data)
@@ -133,7 +147,7 @@ class HomeFragment : Fragment() {
 
     fun getTrendingAnimes() {
         CoroutineScope(Dispatchers.Main).launch {
-            val call = repository.getTrendingData(Config.ANIME_TYPE)
+            val call = kitsuRepository.getTrendingData(Config.ANIME_TYPE)
             val trendig = call.body()
             if (trendig != null) {
                 trendingList.addAll(trendig.data)
@@ -178,18 +192,33 @@ class HomeFragment : Fragment() {
         binding.recyclerTrendingHome.adapter = adapter
     }
 
-    /* fun getCategories(){
-         CoroutineScope(Dispatchers.IO).launch {
-             val call = repository.getCategories()
-             val category = call.body()
+    private fun getCategories() {
+        CoroutineScope(Dispatchers.Main).launch {
+            val call = kitsuRepository.getCategories()
+            val category = call.body()
 
-             if (category!= null){
+            if (category != null) {
                 categoriesList.addAll(category.data)
-                 Log.d("categoria", category.data[1].attributes.title)
-             }
-         }
-     }*/
+                categoryAdapter.notifyDataSetChanged()
+            }
+        }
+    }
 
+    private fun categoriesAdapter(){
+        categoryAdapter = CategoryAdapter(categoriesList, object : ClickListener{
+            override fun onClick(vista: View, index: Int) {
+                val intent = Intent (activity, CategoryActivity::class.java)
+                intent.putExtra("category", categoriesList.get(index).attributes.title)
+                intent.putExtra("type", type)
+                startActivity(intent)
+            }
+
+        })
+        val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerCategories.setHasFixedSize(true)
+        binding.recyclerCategories.layoutManager = layoutManager
+        binding.recyclerCategories.adapter = categoryAdapter
+    }
     //BUTTON STYLES
     private fun selectedAnimeStyle() {
         binding.buttonAnimeHome.setBackgroundResource(R.drawable.buttons_shape)

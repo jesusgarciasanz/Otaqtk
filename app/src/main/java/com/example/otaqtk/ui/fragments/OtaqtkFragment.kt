@@ -1,5 +1,6 @@
 package com.example.otaqtk.ui.fragments
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -25,23 +26,33 @@ class OtaqtkFragment : Fragment() {
     }
 
     private fun initListeners() {
-        binding.buttonOtaqtkMangas.setOnClickListener {
-            selectedMangaStyle()
-        }
-        binding.buttonOtaqtkAnimes.setOnClickListener {
+        binding.buttonAnimeOtaqtk.setOnClickListener {
             selectedAnimeStyle()
+            binding.buttonAnimeOtaqtk.isEnabled = false
+            binding.buttonMangasOtaqtk.isEnabled = true
+        }
+        binding.buttonMangasOtaqtk.setOnClickListener {
+            selectedMangaStyle()
+            binding.buttonMangasOtaqtk.isEnabled = false
+            binding.buttonAnimeOtaqtk.isEnabled = true
         }
     }
+
+
 
     //Button Styles
     private fun selectedAnimeStyle() {
-        binding.buttonOtaqtkAnimes.setBackgroundResource(R.drawable.selected_button_shape)
-        binding.buttonOtaqtkMangas.setBackgroundResource(R.drawable.unselected_button_shape)
+        binding.buttonAnimeOtaqtk.setBackgroundResource(R.drawable.buttons_shape)
+        binding.buttonAnimeOtaqtk.setTextColor(Color.parseColor("#3E92CC"))
+        binding.buttonMangasOtaqtk.setBackgroundResource(R.drawable.unselected_button_shape)
+        binding.buttonMangasOtaqtk.setTextColor(Color.parseColor("#FDFDFD"))
     }
 
     private fun selectedMangaStyle() {
-        binding.buttonOtaqtkAnimes.setBackgroundResource(R.drawable.unselected_button_shape)
-        binding.buttonOtaqtkMangas.setBackgroundResource(R.drawable.selected_button_shape)
+        binding.buttonMangasOtaqtk.setBackgroundResource(R.drawable.buttons_shape)
+        binding.buttonMangasOtaqtk.setTextColor(Color.parseColor("#3E92CC"))
+        binding.buttonAnimeOtaqtk.setBackgroundResource(R.drawable.unselected_button_shape)
+        binding.buttonAnimeOtaqtk.setTextColor(Color.parseColor("#FDFDFD"))
     }
 
 }

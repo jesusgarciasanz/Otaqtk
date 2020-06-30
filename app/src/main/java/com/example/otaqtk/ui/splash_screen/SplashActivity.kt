@@ -24,6 +24,7 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed({
             intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
+            finish()
         }, SPLASH_DURATION.toLong())
     }
 }

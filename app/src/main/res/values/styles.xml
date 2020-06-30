@@ -26,4 +26,11 @@
         <item name="cornerSizeBottomLeft">15dp</item>
         <item name="cornerSizeBottomRight">15dp</item>
     </style>
+
+    <style name="circleImage">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+        <item name="strokeColor">#121E3A</item>
+        <item name="strokeWidth">3dp</item>
+    </style>
 </resources>
