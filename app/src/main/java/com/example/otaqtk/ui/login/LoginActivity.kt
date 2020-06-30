@@ -4,6 +4,9 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
+import android.text.InputType
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
@@ -11,6 +14,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.otaqtk.R
 import com.example.otaqtk.api.OtaqtkRepository
 import com.example.otaqtk.databinding.ActivityLoginBinding
+import com.example.otaqtk.pojo.Profile
 import com.example.otaqtk.ui.home.HomeActivity
 import com.example.otaqtk.ui.register.RegisterActivity
 import com.facebook.*
@@ -36,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var callbackManager: CallbackManager
     private val otaqtkRepository: OtaqtkRepository = OtaqtkRepository()
-
+    private var seePassword : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +53,7 @@ class LoginActivity : AppCompatActivity() {
             .requestEmail().build()
         googleSignInClient = GoogleSignIn.getClient(this, googleSignIn)
         callbackManager = CallbackManager.Factory.create()
+
 
         auth = FirebaseAuth.getInstance()
         initListeners()
@@ -71,6 +76,18 @@ class LoginActivity : AppCompatActivity() {
         binding.buttonLoginAnonymous.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
             finish()
+        }
+
+        binding.buttonSeePassword.setOnClickListener {
+            if (seePassword == false){
+                seePassword = true
+                binding.editTextPassword.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                binding.buttonSeePassword.setImageResource(R.drawable.ic_hide_password)
+            }else if (seePassword == true){
+                seePassword = false
+                binding.editTextPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                binding.buttonSeePassword.setImageResource(R.drawable.ic_colored_eye)
+            }
         }
     }
 
@@ -184,6 +201,22 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
+    private fun createProfile() {
+        CoroutineScope(Dispatchers.Main).launch {
+            val android_id: String = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
+            val profile = Profile(FirebaseAuth.getInstance().uid, "", android_id, "","",true, FirebaseAuth.getInstance().currentUser?.email!!.split("@")[0])
+            val call = otaqtkRepository.createProfile(profile)
+            val token = call.body()
+            if (call.code() == 200 ) {
+                val pref = getSharedPreferences("user_token",Context.MODE_PRIVATE)
+                val editor = pref.edit()
+                editor.putString("token", token?.token)
+                editor.apply()
+            }
+
+        }
+
+    }
 
     /*    private fun signInWithFAcebook(){
         binding.buttonLoginFacebook.setReadPermissions("email", "public_profile")

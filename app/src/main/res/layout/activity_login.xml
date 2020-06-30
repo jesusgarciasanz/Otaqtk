@@ -84,7 +84,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <LinearLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:layout_margin="10dp"
@@ -93,17 +93,26 @@
                         app:layout_constraintStart_toStartOf="parent">
 
                         <ImageView
+                            android:id="@+id/imageView19"
                             android:layout_width="23dp"
                             android:layout_height="27dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_password" />
+                            android:src="@drawable/ic_password"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
                             android:layout_gravity="center"
+                            android:layout_marginBottom="3dp"
                             android:padding="10dp"
-                            android:textColorHint="#3E92CC">
+                            android:textColorHint="#3E92CC"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/button_see_password"
+                            app:layout_constraintStart_toEndOf="@+id/imageView19"
+                            app:layout_constraintTop_toTopOf="parent">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/edit_text_password"
@@ -114,7 +123,16 @@
                                 android:inputType="textPassword"
                                 android:textColor="#FFFF" />
                         </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/button_see_password"
+                            android:layout_width="23dp"
+                            android:layout_height="27dp"
+                            android:src="@drawable/ic_colored_eye"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

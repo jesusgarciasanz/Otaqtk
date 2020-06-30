@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.otaqtk.R
@@ -58,11 +59,13 @@ class MangaInfoActivity : AppCompatActivity() {
         token = value?.getString("token", "").toString()
 
 
+            getMangaById(id)
+            getChapterRecycler()
+            initListeners()
 
-        getMangaById(id)
-        getChapterRecycler()
-        getExtraInfo()
-        initListeners()
+        if (token != ""){
+            getExtraInfo()
+        }
     }
 
     private fun initListeners() {
@@ -83,17 +86,27 @@ class MangaInfoActivity : AppCompatActivity() {
         }
 
         binding.mangaInfoLike.setOnClickListener {
-            if (info.is_favourite){
-                deleteStatus()
+            if (token != ""){
+                if (info.is_favourite){
+                    deleteStatus()
+                }else{
+                    status = Config.STATUS_FAV
+                    createStatus()
+                }
             }else{
-                status = Config.STATUS_FAV
-                createStatus()
+                Toast.makeText(this, "You need to be logged", Toast.LENGTH_LONG).show()
             }
+
         }
 
         binding.buttinHaveitInfo.setOnClickListener{
-            status = Config.OWNED_TYPE
-            statusList()
+            if (token != ""){
+                status = Config.OWNED_TYPE
+                statusList()
+            }else{
+                Toast.makeText(this, "You need to be logged", Toast.LENGTH_LONG).show()
+            }
+
         }
     }
 

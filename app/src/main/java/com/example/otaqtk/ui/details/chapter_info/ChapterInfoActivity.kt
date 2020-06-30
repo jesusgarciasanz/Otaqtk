@@ -48,8 +48,11 @@ class ChapterInfoActivity : AppCompatActivity() {
         token = value?.getString("token", "").toString()
 
         getChapterData(chapterId)
-        getExtraInfo()
         initListeners()
+
+        if (token != ""){
+            getExtraInfo()
+        }
     }
 
     private fun initListeners() {
@@ -64,8 +67,13 @@ class ChapterInfoActivity : AppCompatActivity() {
             finish()
         }
         binding.buttonHaveitChapter.setOnClickListener {
-            status = Config.OWNED_TYPE
-            createStatus()
+            if (token != ""){
+                status = Config.OWNED_TYPE
+                createStatus()
+            }else{
+                Toast.makeText(this, "You need to be logged", Toast.LENGTH_LONG).show()
+            }
+
         }
     }
 

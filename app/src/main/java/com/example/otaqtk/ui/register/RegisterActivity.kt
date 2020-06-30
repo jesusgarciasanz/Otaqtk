@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings.Secure
+import android.text.InputType
 import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
@@ -26,6 +27,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityRegisterBinding
     private val otaqtkRepository: OtaqtkRepository = OtaqtkRepository()
+    private var seePassword: Boolean = false
 
     @SuppressLint("HardwareIds")
 
@@ -46,7 +48,29 @@ class RegisterActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
+        binding.buttonSeePasswordRegister.setOnClickListener {
+            if (seePassword == false){
+                seePassword = true
+                binding.editTextPassword.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                binding.buttonSeePasswordRegister.setImageResource(R.drawable.ic_hide_password)
+            }else if (seePassword == true){
+                seePassword = false
+                binding.editTextPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                binding.buttonSeePasswordRegister.setImageResource(R.drawable.ic_colored_eye)
+            }
+        }
 
+        binding.seeConfirmPasword.setOnClickListener {
+            if (seePassword == false){
+                seePassword = true
+                binding.editTextConfirmpassword.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                binding.seeConfirmPasword.setImageResource(R.drawable.ic_hide_password)
+            }else if (seePassword == true){
+                seePassword = false
+                binding.editTextConfirmpassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                binding.seeConfirmPasword.setImageResource(R.drawable.ic_colored_eye)
+            }
+        }
     }
 
 
