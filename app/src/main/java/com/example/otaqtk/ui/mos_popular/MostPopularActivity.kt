@@ -3,9 +3,12 @@ package com.example.otaqtk.ui.mos_popular
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.AbsListView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.otaqtk.R
 import com.example.otaqtk.adapters.ClickListener
 import com.example.otaqtk.adapters.SearchAdapter
@@ -24,13 +27,23 @@ class MostPopularActivity : AppCompatActivity() {
     private val kitsuRepository: KitsuRepository = KitsuRepository()
     private lateinit var popularList: MutableList<Data>
     private lateinit var popularAdapter: SearchAdapter
+
+
+    private var offset: Int = 0
+    private var isScrolling: Boolean = false
+    private var currentItems: Int = 0
+    private var totalItems: Int = 0
+    private var scrollOutItems: Int = 0
+    private var hasNext: Boolean = false
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_most_popular)
         popularList = arrayListOf()
         type = intent.getStringExtra("type")
         checkType()
-        getPopularContent()
+        getPopularExtra(type, offset)
         popularRecycler()
         initListeners()
     }
@@ -40,29 +53,38 @@ class MostPopularActivity : AppCompatActivity() {
             selectedAnimeStyle()
             binding.buttonAnimePopular.isEnabled = false
             binding.buttonMangasPopular.isEnabled = true
-            popularList.clear()
-            getPopularContent()
             type = Config.ANIME_TYPE
+            popularList.clear()
+            offset = 0
+            getPopularExtra(type, offset)
+            popularAdapter.notifyDataSetChanged()
+
         }
         binding.buttonMangasPopular.setOnClickListener {
             selectedMangasStyle()
             binding.buttonMangasPopular.isEnabled = false
             binding.buttonAnimePopular.isEnabled = true
-            popularList.clear()
-            getPopularContent()
             type = Config.MANGA_TYPE
+            popularList.clear()
+            offset = 0
+            getPopularExtra(type, offset)
+            popularAdapter.notifyDataSetChanged()
+
         }
         binding.backButtonPopular.setOnClickListener {
             finish()
         }
     }
+    
 
-    private fun getPopularContent(){
+    private fun getPopularExtra(type: String, off: Int){
         CoroutineScope(Dispatchers.Main).launch {
-            val call = kitsuRepository.getPopularData(type)
-            val popular = call.body()
-            if (popular!= null){
-                popularList.addAll(popular.data)
+            val call = kitsuRepository.getPopularExtra(type, off)
+            val pop = call.body()
+            if (pop != null && call.code() == 200){
+                popularList.addAll(pop.data)
+                hasNext = pop.links.next != null
+                offset += Config.LIMIT
                 popularAdapter.notifyDataSetChanged()
             }
         }
@@ -81,6 +103,28 @@ class MostPopularActivity : AppCompatActivity() {
         binding.recyclerPopularActivity.setHasFixedSize(true)
         binding.recyclerPopularActivity.layoutManager = layoutManager
         binding.recyclerPopularActivity.adapter = popularAdapter
+
+        binding.recyclerPopularActivity.addOnScrollListener(object: RecyclerView.OnScrollListener(){
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL){
+                    isScrolling = true
+                }
+
+            }
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                currentItems = layoutManager.childCount
+                totalItems = layoutManager.itemCount
+                scrollOutItems = layoutManager.findFirstVisibleItemPosition()
+
+                if (isScrolling && currentItems + scrollOutItems == totalItems) {
+                    isScrolling = false
+                    if (hasNext){
+                        getPopularExtra(type, offset)
+                    }
+                }
+            }
+        })
 
     }
     private fun checkType(){

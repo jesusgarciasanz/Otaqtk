@@ -25,6 +25,10 @@ interface Api {
     @GET("{type}?sort=-userCount")
     suspend fun getPopularData(@Path("type") type:String) : Response<DataArray>
 
+    //GET POPULAR EXTRA
+    @GET("{type}?sort=-userCount")
+    suspend fun getPopularExtra(@Path("type") type: String, @Query("page[offset]") offset: Int, @Query("page[limit]")limit: Int): Response<DataArray>
+
     //SEARCH
     @GET("{type}")
     suspend fun searchContent(@Path("type") type:String, @Query("filter[text]") text: String ) : Response<DataArray>

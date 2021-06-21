@@ -34,6 +34,9 @@ class KitsuRepository {
     //GET PUPULAR CONTENT
     suspend fun getPopularData(type: String) = kitsuClient.getPopularData(type)
 
+    //GET POPULAR DATA
+    suspend fun getPopularExtra(type: String,  offset: Int, limit: Int= Config.LIMIT) = kitsuClient.getPopularExtra(type, offset, limit)
+
     //SEARCH CONTENT
     suspend fun searchContent(type: String, text:String) = kitsuClient.searchContent(type, text)
 

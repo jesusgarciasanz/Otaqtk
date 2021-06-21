@@ -92,7 +92,6 @@ class CategoryActivity : AppCompatActivity() {
                 categoryList.addAll(cat.data)
                 hasNext = cat.links.next != null
                 offset += Config.LIMIT
-                Log.d("perfil", off.toString())
                 categoryAdapter.notifyDataSetChanged()
             }
         }
@@ -128,7 +127,6 @@ class CategoryActivity : AppCompatActivity() {
 
                 if (isScrolling && currentItems + scrollOutItems == totalItems) {
                     isScrolling = false
-                    Log.d("indio", scrollOutItems.toString())
                     if (hasNext){
                         getByCategory(type, category, offset)
                     }
